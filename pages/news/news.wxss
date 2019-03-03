@@ -1,0 +1,15 @@
+/* pages/news.wxss */
+@import '../template/template.wxss';
+page{
+  background-color: #eee;
+}
+swiper{
+  width: 100%;
+  height: 400rpx;
+}
+.news-banner image{
+  width: 100%;
+}
+.news-list{
+  padding: 30rpx;
+}

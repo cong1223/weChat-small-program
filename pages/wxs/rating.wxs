@@ -1,0 +1,6 @@
+var ratingStars = function (ratingAvg) {
+  return Number(ratingAvg/2).toFixed();
+}
+module.exports = {
+  ratingStars: ratingStars
+};

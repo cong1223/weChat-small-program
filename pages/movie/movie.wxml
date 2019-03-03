@@ -1,0 +1,38 @@
+<!--pages/movie/movie.wxml-->
+<import src='../template/template.wxml' />
+<swiper autoplay="true" indicator-dots="true" indicator-active-color="#fff" class="movie-banner">
+  <swiper-item wx:for="{{inTheaters}}" wx:key="index" wx:for-item="movie"><image src="{{movie.images.large}}" mode='aspectFill' bindtap='openMovieDetail' data-movie-id='{{movie.id}}'></image></swiper-item>
+</swiper>
+<view class='search-movie-container'>
+  <input placeholder='请输入想要搜索的电影信息...' bindinput='onSearch'></input>
+</view>
+<view class='searchResult' wx:if="{{isSearch}}">
+  <view class='movie-list'>
+    <block wx:for="{{searchList}}" wx:key="index">
+      <template is="movie-item" data="{{item}}"></template>
+    </block>
+  </view>
+  <view class='seachEmpty' wx:if="{{isSeachEmpty}}">没有找到你想搜索的电影信息...</view>
+</view>
+<block wx:if="{{!isSearch}}">
+  <view class='commingSoon-container'>
+    <view class='title'>
+      <view class='title-left'>即将上映</view>
+      <view class='title-right' bindtap='getMore'>更多></view>
+    </view>
+    <view class='movie-list'>
+      <block wx:for="{{commingSoon}}" wx:key="index">
+        <template is="movie-item" data="{{item}}"></template>
+      </block>
+    </view>
+  </view>
+  <view class="top250">
+    <view class='title'>Top250</view>
+    <view class='movie-list'>
+      <block wx:for="{{topList}}" wx:key="index">
+        <template is="movie-item" data="{{item,index}}"></template>
+      </block>
+      <template is='loading' wx:if="{{isShowLoading}}"></template>
+    </view>
+  </view>
+</block>

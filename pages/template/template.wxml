@@ -1,0 +1,39 @@
+<!--pages/newsItemTemplate.wxml-->
+<wxs src="../wxs/rating.wxs" module="rating" />
+
+<template name="newsItem">
+  <view class='news-item' data-index="{{index}}" bindtap='gotoNewsDetail'>
+    <view class='item-head'>
+      <image class='author-image' src='{{item.writersUrl}}' binderror="onImageError" data-writer-index='{{index}}'></image>
+      <text class='author'>{{item.writers}}</text>
+      <text class='public-date'>发表于{{item.publishDateStr}}</text>
+    </view>
+    <text class='title'>{{item.title}}</text>
+    <image class='description-image' src='{{item.newsUrl}}' binderror="onImageError" data-news-index='{{index}}'></image>
+    <text class='description'>{{item.description}}</text>
+  </view>
+</template>
+
+<template name="ratingTemp">
+  <view class='movie-rating'>
+    <block wx:for="{{[1,2,3,4,5]}}" wx:key="index">
+      <image src='../../images/star_{{rating.ratingStars(average) >= item ? 1 : 0}}.png'></image>
+    </block>
+    <text class='rating-score'>{{average}}</text>
+  </view>
+</template>
+
+<template name="movie-item">
+  <view class='movie-item-container' bindtap='openMovieDetail' data-movie-id='{{item.id}}'>
+      <image class='largeImg' src='{{item.images.large}}' binderror="onImageError" data-index="{{index}}"></image>
+      <text class='movie-name'>{{item.original_title}}</text>
+      <template is="ratingTemp" data="{{average:item.rating.average}}"></template>
+  </view>
+</template>
+
+<template name="loading">
+  <view class="onload">
+    <image src="../../images/loading_ico.png"></image>
+    <text>正在加载……</text>
+  </view>
+</template>

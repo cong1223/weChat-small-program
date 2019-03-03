@@ -1,0 +1,8 @@
+/* pages/more/more.wxss */
+@import "../template/template.wxss";
+.moreList{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 30rpx;
+}

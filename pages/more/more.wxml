@@ -1,0 +1,10 @@
+<!--pages/more/more.wxml-->
+<import src='../template/template.wxml' />
+
+<view class='moreList'>
+  <block wx:for="{{moreCommingSoon}}" wx:key="index">
+    <template is="movie-item" data="{{item}}"></template>
+  </block>
+  <template is='loading' wx:if="{{isShowLoading}}"></template>
+</view>
+
